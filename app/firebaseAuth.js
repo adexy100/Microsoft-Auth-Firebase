@@ -1,14 +1,14 @@
 //import * as firebase from "firebase";
 
 let firebaseConfig = {
-  apiKey: process.env.apiKey,
+  apiKey: process.env,
   authDomain: "precallprep-c078b.firebaseapp.com",
   // databaseURL: "https://precallprep-c078b-default-rtdb.firebaseio.com",
   projectId: "precallprep-c078b",
   storageBucket: "precallprep-c078b.appspot.com",
-  messagingSenderId: process.env.measurementId,
-  appId: process.env.appId,
-  measurementId: "G-28M24BP4T2"
+  messagingSenderId: process.env,
+  appId: process.env,
+  measurementId: process.env
 };
 
 // Initialize Firebase
@@ -19,10 +19,11 @@ let provider = new firebase.auth.OAuthProvider('microsoft.com');
 
 let accessToken = '';
 
-provider.setCustomParameters({
-  //your Azure tenant ID
-  tenant: process.env.tenantID
-});
+// optional for Azure AD users only
+// provider.setCustomParameters({
+//   //your Azure tenant ID
+//   tenant: "3abef5f2-9f47-4b54-87d1-94d0317423f1"
+// });
 
 // set the persistence to session
 firebase.auth().setPersistence(firebase.auth.Auth.Persistence.SESSION);
